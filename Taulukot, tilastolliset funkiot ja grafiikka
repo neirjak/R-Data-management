@@ -1,0 +1,108 @@
+#Viikko 2
+#Taulukot, tilastolliset funkiot ja grafiikka
+#2.1 R:n tietotyypit
+#2.1.1 Muuttujan tyyppi
+a <- 5
+b <- TRUE
+c <- c("mies", "nainen")
+e <- as.factor(c)
+class(a)
+class(b)
+class(c)
+class(e)
+a <- c("4", "47", "-7")
+a
+is.numeric(a)
+is.character(a)
+a <- as.numeric(a)
+a
+#Merkkijonot
+"R"
+merkkijono <- "data-analyysi"
+merkkijono
+ohjaajat <- c("Ville", "Toni", "Aku")
+ohjaajat
+class(ohjaajat)
+#2.1.3 Faktorit
+sukupuoli <- c("N", "N", "M", "N", "M", "N")
+sukupuoli
+str(sukupuoli)
+sukupuoli <- as.factor(sukupuoli)
+sukupuoli
+str(sukupuoli)
+#2.2 Taulukko
+a <- c(ohjaajat,5)
+a
+class(a)
+#2.2.1 Taulukon luominen
+nimi <- c("Ville", "Toni", "Aku")
+tunnus <- c(48,84,19)
+kengannumero <- c(42,42,43)
+ohjaajat <- data.frame(nimi, tunnus, kengannumero, stringsAsFactors = FALSE)
+ohjaajat
+class(ohjaajat)
+str(ohjaajat)
+#2.2.2 Aineiston lataaminen tiedostosta
+getwd()
+setwd()
+ot1 <- read.table(file="OT2014.csv", dec=",", sep=";", header=T, quote="\"", stringsAsFactors = F)
+ot1
+ot2 <- read.csv2(file="OT2014.csv", stringsAsFactors = F)
+ot2
+resim <- read.table(file="Resim.csv", dec=",", sep=";", header=T, quote="\"", stringsAsFactors = F)
+resim
+#Alkioihin, sarakkeisiin ja riveihin viittaaminen
+ohjaajat[3,1]
+ohjaajat[2,]
+ohjaajat[,3]
+ohjaajat$nimi
+ohjaajat$kengannumero
+class(ohjaajat$nimi)
+class(ohjaajat$kengannumero)
+#2.2.4 Osa-aineistojen valinta
+ohjaajat[ohjaajat$nimi == "Ville",]
+ohjaajat$sukunimi <- c("Hyvönen", "Lehtonen", "Leivonen")
+ohjaajat
+resim
+resim$Nimi
+resim[resim$Nimi == 'Tapani', ]
+resim[resim$Nimi == 'Tapani' | resim$Nimi == 'Mikko', ]
+resim$Arvosana <- c(8,8,7,10,NA)
+resim
+resim[resim$Arvosana >=8, ]
+resim[which(resim$Arvosana >= 8), ]
+subset(resim, resim$Arvosana >= 8)
+#2.3 Tilastolliset funktiot
+#2.3.1 Tunnusluvut
+sum(ohjaajat$tunnus)/length(ohjaajat$tunnus)
+mean(ohjaajat$tunnus)
+ika <- c(30,30,NA, 44)
+mean(ika)
+mean(ika, na.rm=TRUE)
+sd(ohjaajat$tunnus)
+median(ohjaajat$tunnus)
+min(ohjaajat$tunnus)
+max(ohjaajat$tunnus)
+#2.3.2 Simulointi ja jakaumafunktiot
+qnorm(mean=0,sd=1, p=1/4, lower=T)
+qnorm(0.99, lower=F)
+qnorm(0.01)
+qbinom(p=1/4, size=13, prob=1/3, lower.tail=T)
+dnorm(x=4, mean=0, sd=1)
+dbinom(x=4, size=13, prob=1/3)
+pnorm(q=4, mean=0, sd=1)
+pbinom(q=4, size=13, prob=1/3)
+rnorm(mean=0, sd=1, n=10)
+rbinom(size=13, prob=1/3, n=10)
+#2.4 Aineiston visuaalinen tarkastelu
+curve(x^2, from=0, to=1)
+curve(log(x))
+curve(x+1)
+curve(sqrt(x))
+x <- seq(0,1, by=0.001)
+plot(x=x, y=x^2, type='l')
+hist(iris[iris$Species=="setosa",]$Petal.Length)
+hist(resim$Ostetut)
+boxplot(iris[iris$Species=="versicolor",]$Petal.Length)
+boxplot(iris$Petal.Length ~ iris$Species)
+boxplot(resim$Myydyt)
