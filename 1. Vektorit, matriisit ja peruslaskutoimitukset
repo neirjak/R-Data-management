@@ -1,10 +1,10 @@
 #Coding with R
 #Instant guide
-#Tilastollinen p‰‰ttely R-ohjelmistolla
+#Tilastollinen p√§√§ttely R-ohjelmistolla
 #Luku 1
 #Vektorit, matriisit ja peruslaskutoimitukset
 #1.1 Skalaarimuuttujat
-#1.1.1 M‰‰rittely
+#1.1.1 M√§√§rittely
 15
 3.14159
 a <- 42
@@ -44,7 +44,7 @@ seq(0,6,by=1)
 0:6
 seq(0,100, by=10)
 seq(0,6,by=0.5)
-#1.2.2 Vektorien k‰sittely
+#1.2.2 Vektorien k√§sittely
 a <- c(3,6,30,3,0)
 a[1]
 a[6]
@@ -56,7 +56,7 @@ a[a>3]
 #1.2.3 Matriisien luominen
 matrix(c(1,2,3,4,5,6,7,8,9), ncol=3, nrow=3, byrow=TRUE)
 matrix(c(1,2,3,4,5,6,7,8,9), ncol=3, nrow=3, byrow=F)
-#1.2.4 Matriisien k‰sittely
+#1.2.4 Matriisien k√§sittely
 a <- matrix(c(1,2,3,4,5,6,7,8,9), ncol=3, nrow=3, byrow=TRUE)
 a[,1]
 a[1,]
