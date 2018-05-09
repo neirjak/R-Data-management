@@ -1,0 +1,90 @@
+#Coding with R
+#Instant guide
+#Tilastollinen p‰‰ttely R-ohjelmistolla
+#Luku 1
+#Vektorit, matriisit ja peruslaskutoimitukset
+#1.1 Skalaarimuuttujat
+#1.1.1 M‰‰rittely
+15
+3.14159
+a <- 42
+a
+b <- 0.001
+b
+#1.1.2 Laskuoperaatiot
+a <- 5
+b <- 3
+a-b
+a+b
+a-6
+a*b
+a/b
+a%%b
+#Ingen rest
+#1.1.3 Loogiset operaattorit ja totuusarvot
+1<0
+x <- 1
+x < 2
+2==2
+y <- 2 !=2
+y
+y == TRUE
+(1>0)&(1<0)
+(1>0)|(1<0)
+75/306
+#Vektorit ja matriisit
+#1.2.1 Vektorien luominen
+a <- c(0,1,2,3)
+b <- c(a,4,5,6)
+a
+b
+0:6
+seq(0,6,by=1)
+6:0
+0:6
+seq(0,100, by=10)
+seq(0,6,by=0.5)
+#1.2.2 Vektorien k‰sittely
+a <- c(3,6,30,3,0)
+a[1]
+a[6]
+a[c(3,4,5)]
+a[3:5]
+a[c(F,F,T,T,T)]
+a>3
+a[a>3]
+#1.2.3 Matriisien luominen
+matrix(c(1,2,3,4,5,6,7,8,9), ncol=3, nrow=3, byrow=TRUE)
+matrix(c(1,2,3,4,5,6,7,8,9), ncol=3, nrow=3, byrow=F)
+#1.2.4 Matriisien k‰sittely
+a <- matrix(c(1,2,3,4,5,6,7,8,9), ncol=3, nrow=3, byrow=TRUE)
+a[,1]
+a[1,]
+a[1,2]
+a[a>5]
+a[2,1] <- 9001
+a
+a[,1] <- c(1,2,3)
+a
+a[2,]
+a[,2]
+a <- rbind(a,c(1,1,1))
+a <- cbind(a, c(8,8,8,9))
+a
+a <- a[,c(TRUE,FALSE,TRUE,TRUE)]
+a
+#1.2.5 Vektorien ja matriisien laskutoimitukset
+A <- matrix(c(1,2,3,4,5,6,7,8,9), ncol=3, nrow=3, byrow=T)
+B <- matrix(c(9,8,7,6,5,4,3,2,1), ncol=3, nrow=3, byrow=T)
+A%*%B
+t(A)
+a <- c(0,1,2,3)
+a
+a %*% diag(4)
+solve(B)
+x <- matrix(c(4,6,7,11,14,21,32,rep(1,7)), ncol=2)
+y <- matrix(c(15,14,12,11,10,8,6), ncol=1)
+x
+y
+t(x)
+solve(t(x)%*%x)%*%t(x)%*%y
